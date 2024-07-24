@@ -1,13 +1,12 @@
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
-import CardList from './components/CardList/CardList';
-import {Card} from 'semantic-ui-react';
-
+import RecipesList from './components/RecipesList/RecipesList';
 
 function App() {
   return (
     <div>
-      <CardList />
+      <header>ici le logo ... les liens du header</header>
+      <RecipesList />
     </div>
   );
 }
