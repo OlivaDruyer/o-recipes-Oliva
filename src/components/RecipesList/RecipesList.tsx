@@ -16,14 +16,15 @@ function RecipesList({recipes}: RecipesListProps) {
         <Grid.Column key={recipe.id}>
           <Card>
             <Image src={recipe.thumbnail}/>
-            <Card.Content>
+             <Card.Content>
               <Card.Header>{recipe.title}</Card.Header>
               <Card.Description>{recipe.description}</Card.Description>
+              <Card.Description>{recipe.difficulty}</Card.Description>
             </Card.Content>
               <Card.Content extra>
               <Link to={`/recipe/${recipe.slug}`}>Voir la recette</Link>
               </Card.Content>
-          </Card>
+          </Card> 
         </Grid.Column>
       ))}
     </Grid.Row>
