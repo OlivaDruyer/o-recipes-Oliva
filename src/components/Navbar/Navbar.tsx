@@ -1,35 +1,43 @@
-import React, { useState } from 'react';
-import { Menu, Grid } from 'semantic-ui-react';
+import { MenuItem, GridColumn, Grid, Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import React from 'react';
 
 interface MenuProps {
-    items: { name: string; label: string } [];
-    activeItem: string;
-    onItemClick: (name: string) => void;
-  }
-  
-  // Définir le composant fonctionnel avec les props
-  function CustomMenu ({ items, activeItem, onItemClick }: MenuProps) {
-    
-    return (
+  items: { slug: string; name: string; label: string }[];
+  activeItem: string | null;
+  onItemClick: (name: string) => void;
+}
+
+function CustomMenu ({ items, activeItem, onItemClick }: MenuProps) {
+  return (
     <Grid>
-      <Grid.Column width={4}>
-        <Menu fluid vertical tabular>
-          <Menu.Item
+      <GridColumn width={3}>
+        <Menu vertical tabular >
+            {/*menu statique du menu Accueil*/}
+            <MenuItem
             name='Accueil'
             active={activeItem === 'Accueil'}
-            onClick={handleItemClick}
+            onClick={() => onItemClick('Accueil')}
+            as={Link} // Assure que le menu Accueil est un lien
+            to='/'
           >
-            Accueil
-          </Menu.Item>
-          <Menu.Item
-            name='pics'
-            active={activeItem === 'pics'}
-            onClick={handleItemClick}
-          >
-            Pics
-          </Menu.Item>
+             Accueil
+            </MenuItem>
+            {/*Menu dynamique avec les recettes*/}
+           {items.map(item => (
+            <MenuItem
+              key={item.name}
+              name={item.name}
+              active={activeItem === item.name}
+              onClick={() => onItemClick(item.name)}
+              as={Link} // Assure que chaque item est un lien
+              to={`/recipe/${item.slug}`}
+            >
+              {item.label}
+            </MenuItem>
+          ))}
         </Menu>
-      </Grid.Column>
+      </GridColumn>
     </Grid>
   );
 }
