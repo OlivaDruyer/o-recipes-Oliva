@@ -6,7 +6,11 @@ import axios from "axios";
 import { useState } from "react";
 
 
-function Form() {
+interface HeaderProps {
+    setToken: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+function Form({ setToken }: HeaderProps) {
 //STATE pour le pseudo
 //au début pas de pseudo
 const [pseudo, setPseudo] = useState<null | string>(null);
@@ -28,6 +32,10 @@ const [error, setError] = useState<null | string>(null);
         console.log(response);
         //si on reçoit une 200 on enregistre le pseudo reçu dans le state
         setPseudo(response.data.pseudo);
+
+        //On enregistre le JSONWEB de token dans le state de APP grace au setter setToken que App a envoyé via une props
+        setToken(response.data.token);
+
         //et on vire la potentielle erreur du state
         setError(null);
     } catch (e) {
@@ -50,10 +58,13 @@ const [error, setError] = useState<null | string>(null);
             //on est deconnecté si le pseudo est null
             //on set le pseudo et on met à null
             setPseudo(null);
-             }}>Déconnexion</Button>
+             }}>
+                Déconnexion
+            </Button>
+             <Link to="/favs">Recettes préférées --en cours de construction--</Link>
              </>
         ) : (  //si on a un pseudo, on affiche ceci, sinon on affiche le formulaire avec un message d'erreur
-        <form 
+        <form className="login"
                 onSubmit={(e) => {
             //ne pas oublier le prevent
                 e.preventDefault();
@@ -62,8 +73,8 @@ const [error, setError] = useState<null | string>(null);
             const form = e.currentTarget;
             const formData = new FormData(form)
             //Récupérer le mail
-            const email = formData.get("email");
-            const password = formData.get("pass");
+            const email = formData.get("email") as string;
+            const password = formData.get("pass") as string;
                 checkCredentials(email,password);
 
         }} 

@@ -9,14 +9,30 @@ import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import Navbar from './components/Navbar/Navbar';
 import axios from 'axios';
 import { Recipe } from './@Types/Recipe';
+import { getTokenAndPseudoInLocalStorage } from './localStorage/localStorage';
+import FavPage from './components/RecipesList/FavPage';
 
 function App() {
+
+//STATE pour le JWT et après on envoie le ST dans le header (app) comme ça quand il sera connecté il pourra mettre le token dans le state
+const [token, setToken] = useState(null);
+
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [activeItem, setActiveItem] = useState('Accueil');
+
 //State pour stocker l'état de loading de données
 const [isLoading, setisLoading] = useState(true);
  
+// au rendu de la page, on va chercher dans le localStorage si il y a un token et un pseudo, on les place dans le state
+useEffect(() => {
+  const tokenAndPSeudo = getTokenAndPseudoInLocalStorage();
+
+  if (tokenAndPSeudo) {
+    setToken(tokenAndPSeudo.token);
+  }
+}, []);
+
 
   const fetchData = async () => {
     try {
@@ -33,6 +49,7 @@ const [isLoading, setisLoading] = useState(true);
     fetchData();
   }, []);
 
+
   const onItemClick = (name: string) => {
     setActiveItem(name);
   }
@@ -43,6 +60,7 @@ const [isLoading, setisLoading] = useState(true);
     label: recipe.title
   }));
 
+
   return (
       <div className="container">
         <aside>
@@ -50,13 +68,14 @@ const [isLoading, setisLoading] = useState(true);
         </aside>
         <div className="container-column">
         <header>
-          <Header />
+          <Header setToken={setToken} />
         </header>
         <main>
         {isLoading ? (<p>loading...</p>
            ) : (
            <Routes>
             <Route path="/" element={<RecipesList recipes={recipes} />} />
+            <Route path="/fav" element={<FavPage token={token} />} />
             <Route path="/recipe/:slug" element={<RecipePage allRecipes={recipes} />} />
             <Route path="/error" element={<NotFoundPage />} />
             <Route path="*" element={<NotFoundPage />} />

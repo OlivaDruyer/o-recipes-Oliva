@@ -12,11 +12,16 @@
   .form {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Espacement entre les éléments */
+    justify-content: space-around;
 }
 
 .error{
   color:red;
   font-size:smaller;
 }
-  
+
+.login{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
