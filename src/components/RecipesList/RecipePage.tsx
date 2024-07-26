@@ -12,8 +12,15 @@ function RecipePage({ allRecipes }: RecipePageProps) {
 
   const recipeToDisplay = allRecipes.find(recipe => recipe.slug === slug);
 
+ //Effect pour le scroll à 0 (dans le composant concerné) - ou dans APP en passant par const{pathname}=useLocation()
+  //window.scrollTo(0,0) - scroll en haut de page à chaque re-rendu
+// useEffect(() => {
+// window.scrollTo(0,0);
+// });
+
+
   if (!recipeToDisplay) {
-    return <Navigate to="/error" replace />;
+    return <Navigate to="/error" />;
   }
 
   return (

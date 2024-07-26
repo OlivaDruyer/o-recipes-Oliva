@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Route, Routes } from 'react-router-dom';
 import RecipesList from './components/RecipesList/RecipesList';
 import RecipePage from './components/RecipesList/RecipePage';
-import Header from './components/Formulaire/Header';
+import Header from './components/LogInForm/Header';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import Navbar from './components/Navbar/Navbar';
 import axios from 'axios';
@@ -14,6 +14,9 @@ function App() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [activeItem, setActiveItem] = useState('Accueil');
+//State pour stocker l'état de loading de données
+const [isLoading, setisLoading] = useState(true);
+ 
 
   const fetchData = async () => {
     try {
@@ -22,6 +25,8 @@ function App() {
     } catch (error) {
       setError('Problème de chargement des recettes');
     }
+    //onarrête le loading si y a une erreur
+    setisLoading(false);
   };
 
   useEffect(() => {
@@ -48,12 +53,15 @@ function App() {
           <Header />
         </header>
         <main>
-          <Routes>
+        {isLoading ? (<p>loading...</p>
+           ) : (
+           <Routes>
             <Route path="/" element={<RecipesList recipes={recipes} />} />
             <Route path="/recipe/:slug" element={<RecipePage allRecipes={recipes} />} />
             <Route path="/error" element={<NotFoundPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+           )}
         </main>
       </div>
     </div>

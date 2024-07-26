@@ -7,13 +7,14 @@ html, body {
   display: grid;
   grid-template-columns: 250px 1fr; /* 250px pour le menu et 1fr pour le contenu principal */
   min-height: 100vh; /* Assure que le conteneur prend au moins la hauteur de la fenêtre */
- }
+  }
 
 /* Contenu principal */
 .container-column {
   flex: 1; /* Prend tout l'espace disponible après l'en-tête */
   padding: 20px; /* Espacement interne */
   background-color: #f5f2f2;
+  border-top-right-radius: 15px;
 }
 
 /* Menu latéral */
@@ -22,7 +23,7 @@ aside {
   padding: 30px;
   height: 100%; /* Remplit toute la hauteur du conteneur */
   box-sizing: border-box; /* Inclut padding dans la hauteur totale */
-  border-radius: 10px; /* Coins arrondis pour le menu */
+  border-top-left-radius: 15px; /* Coins arrondis pour le menu */
   overflow: hidden; /* Assure que le contenu ne dépasse pas les coins arrondis */
 }
 
