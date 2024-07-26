@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Route, Routes } from 'react-router-dom';
 import RecipesList from './components/RecipesList/RecipesList';
 import RecipePage from './components/RecipesList/RecipePage';
+import Header from './components/Formulaire/Header';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import Navbar from './components/Navbar/Navbar';
 import axios from 'axios';
@@ -42,6 +43,10 @@ function App() {
         <aside>
           <Navbar items={items} activeItem={activeItem} onItemClick={onItemClick} />
         </aside>
+        <div className="container-column">
+        <header>
+          <Header />
+        </header>
         <main>
           <Routes>
             <Route path="/" element={<RecipesList recipes={recipes} />} />
@@ -51,6 +56,7 @@ function App() {
           </Routes>
         </main>
       </div>
+    </div>
     );
 }
 

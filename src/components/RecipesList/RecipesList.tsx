@@ -1,8 +1,9 @@
-import React from 'react';
-import { Grid, Card, Image } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 import { Recipe } from '../../@Types/Recipe';
 import { Link } from 'react-router-dom';
-import App from './App';
+import './RecipeCSS.css';
+
+
 
 interface RecipesListProps {
   recipes: Recipe[];
@@ -11,24 +12,26 @@ interface RecipesListProps {
 function RecipesList({recipes}: RecipesListProps) {
   return (
     <Grid>
-    <Grid.Row columns={3}>
-      {recipes.map((recipe) => (
-        <Grid.Column key={recipe.id}>
-          <Card>
-            <Image src={recipe.thumbnail}/>
-             <Card.Content>
-              <Card.Header>{recipe.title}</Card.Header>
-              <Card.Description>{recipe.description}</Card.Description>
-              <Card.Description>{recipe.difficulty}</Card.Description>
-            </Card.Content>
-              <Card.Content extra>
-              <Link to={`/recipe/${recipe.slug}`}>Voir la recette</Link>
-              </Card.Content>
-          </Card> 
-        </Grid.Column>
-      ))}
-    </Grid.Row>
-  </Grid>
+      <Grid.Row columns={3} >
+        {recipes.map((recipe) => (
+          <Grid.Column key={recipe.id}>
+            <div className="recipe-card">
+              <img src={recipe.thumbnail} alt={recipe.title} className="recipe-image" />
+              <div className="recipe-content">
+                <h2 className="recipe-title">{recipe.title}</h2>
+                <ul className="recipe-details">
+                  <li>{recipe.description}</li>
+                  <li>Difficulté: {recipe.difficulty}</li>
+                </ul>
+                <Button basic inverted color='pink'>
+                <Link to={`/recipe/${recipe.slug}`} className="recipe-link">Voir la recette</Link>
+                </Button>
+              </div>
+            </div>
+          </Grid.Column>
+        ))}
+      </Grid.Row>
+    </Grid>
 );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { Card, Image } from 'semantic-ui-react';
 import { Recipe } from '../../@Types/Recipe';
+import './RecipeCSS.css';
 
 interface RecipePageProps {
   allRecipes: Recipe[];
@@ -17,46 +17,45 @@ function RecipePage({ allRecipes }: RecipePageProps) {
   }
 
   return (
-    <Card>
-      <Image src={recipeToDisplay.thumbnail} />
-      <Card.Content>
-        <Card.Header>{recipeToDisplay.title}</Card.Header>
-        <Card.Meta>{recipeToDisplay.author}</Card.Meta>
-        <Card.Description>{recipeToDisplay.description}</Card.Description>
-      </Card.Content>
-      <Card.Content extra>
+    <div className="card custom-card">
+    <div className="card-image">
+        <img src={recipeToDisplay.thumbnail} alt={recipeToDisplay.title} />
+    </div>
+    <div className="card-content">
+        <h2 className="card-header">{recipeToDisplay.title}</h2>
+        <p className="card-description">{recipeToDisplay.description}</p>
+    </div>
+    <div className="card-extra">
         {recipeToDisplay.ingredients.length > 0 ? (
-          <div>
-            <strong>Ingrédients:</strong>
-            <ul>
-              {recipeToDisplay.ingredients.map(ingredient => (
-                <li key={ingredient.id}>
-                  {ingredient.quantity} {ingredient.unit} {ingredient.name}
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="card-section">
+                <strong>Ingrédients:</strong>
+                <ul className="ingredients-list">
+                    {recipeToDisplay.ingredients.map(ingredient => (
+                        <li key={ingredient.id}>
+                            {ingredient.quantity} {ingredient.unit} {ingredient.name}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         ) : (
-          <div>Pas d'ingrédients disponibles</div>
+            <div className="card-section">Pas d'ingrédients disponibles</div>
         )}
-        {/* Affichage des instructions */}
         {recipeToDisplay.instructions.length > 0 ? (
-          <div>
-            <strong>Instructions:</strong>
-            <ul>
-              {recipeToDisplay.instructions.map((instruction, id) => (
-                <li key={id}>
-                  {instruction} {/* Affichage du texte de l'instruction */}
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="card-section">
+                <strong>Instructions:</strong>
+                <ul className="instructions-list">
+                    {recipeToDisplay.instructions.map((instruction, id) => (
+                        <li key={id}>
+                            {instruction}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         ) : (
-          <div>Aucune instruction disponible</div>
+            <div className="card-section">Aucune instruction disponible</div>
         )}
-      </Card.Content>
-    </Card>
-  );
-};
+    </div>
+</div>
+)}
 
 export default RecipePage;

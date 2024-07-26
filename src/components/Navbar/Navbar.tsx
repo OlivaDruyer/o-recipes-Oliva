@@ -11,7 +11,7 @@ interface MenuProps {
 function CustomMenu ({ items, activeItem, onItemClick }: MenuProps) {
   return (
     <Grid>
-      <GridColumn width={3}>
+      <GridColumn width={5}>
         <Menu vertical tabular >
             {/*menu statique du menu Accueil*/}
             <MenuItem

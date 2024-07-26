@@ -1,61 +1,36 @@
-/* Conteneur principal */
+html, body {
+  height: 100%; /* Assure que le body prend toute la hauteur de la fenêtre */
+  margin: 0; /* Supprime les marges par défaut */
+}
+
 .container {
   display: grid;
   grid-template-columns: 250px 1fr; /* 250px pour le menu et 1fr pour le contenu principal */
-  height: 100vh; /* Hauteur du conteneur égale à la hauteur de la vue */
+  min-height: 100vh; /* Assure que le conteneur prend au moins la hauteur de la fenêtre */
+ }
+
+/* Contenu principal */
+.container-column {
+  flex: 1; /* Prend tout l'espace disponible après l'en-tête */
+  padding: 20px; /* Espacement interne */
+  background-color: #f5f2f2;
 }
 
 /* Menu latéral */
 aside {
-  background-color: #f4f4f4; /* Couleur de fond du menu */
+  background-color: #f1dfe6; /* Couleur de fond du menu */
   padding: 30px;
   height: 100%; /* Remplit toute la hauteur du conteneur */
   box-sizing: border-box; /* Inclut padding dans la hauteur totale */
-  border-radius: 15px; /* Coins arrondis pour le menu */
+  border-radius: 10px; /* Coins arrondis pour le menu */
   overflow: hidden; /* Assure que le contenu ne dépasse pas les coins arrondis */
 }
 
-/* Contenu principal */
-main {
-  padding: 20px;
-  overflow-y: auto; /* Pour gérer le débordement vertical si nécessaire */
-  box-sizing: border-box; /* Inclut padding dans la hauteur totale */
-}
 
-/* Styles pour la page de fond */
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  background-color: rgb(229, 190, 196);
-  height: 100vh;
-}
 
-/* Styles pour les cartes */
-.card {
-  padding: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Assure que le contenu est réparti également */
-  height: 100%; /* Remplir l'espace vertical disponible */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre subtile pour les cartes */
-  background-color: #fff; /* Fond blanc pour les cartes */
-  border-radius: 10px; /* Coins arrondis */
-}
 
-/* Styles pour la grille de cartes */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Crée des colonnes de taille égale, avec un minimum de 300px */
-  gap: 20px; /* Espacement entre les éléments de la grille */
-  margin: 0 auto; /* Centrer la grille */
-  max-width: 1280px; /* Limiter la largeur de la grille */
-}
 
-.grid-item {
-  background: #fff; /* Fond blanc pour les éléments de la grille */
-  border-radius: 10px; /* Coins arrondis */
-  overflow: hidden; /* Assure que le contenu ne dépasse pas les coins arrondis */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre subtile pour les éléments */
-}
+
+
+
+
