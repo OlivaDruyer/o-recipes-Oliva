@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Recipe } from '../../@Types/Recipe';
 
 interface FavRecipesProps {
-    token: string;
+    token: string | null;
 }
 
 function FavPage({ token }: FavRecipesProps) {

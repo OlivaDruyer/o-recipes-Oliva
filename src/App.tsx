@@ -15,10 +15,10 @@ import FavPage from './components/RecipesList/FavPage';
 function App() {
 
 //STATE pour le JWT et après on envoie le ST dans le header (app) comme ça quand il sera connecté il pourra mettre le token dans le state
-const [token, setToken] = useState(null);
+const [token, setToken] = useState<string | null>(null);
 
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
   const [activeItem, setActiveItem] = useState('Accueil');
 
 //State pour stocker l'état de loading de données
