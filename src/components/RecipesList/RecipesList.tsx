@@ -14,7 +14,7 @@ function RecipesList({recipes}: RecipesListProps) {
     <Grid>
       <Grid.Row columns={3} >
         {recipes.map((recipe) => (
-          <Grid.Column key={recipe.id}>
+          <Grid.Column key={recipe.id}mobile={16} tablet={8} computer={5}>
             <div className="recipe-card">
               <img src={recipe.thumbnail} alt={recipe.title} className="recipe-image" />
               <div className="recipe-content">

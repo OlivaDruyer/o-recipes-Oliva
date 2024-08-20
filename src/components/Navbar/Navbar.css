@@ -1,0 +1,44 @@
+/* CustomMenu.css */
+
+/* Style général du menu */
+.custom-menu {
+    background-color: #f1dfe6; /* Couleur de fond du menu */
+    border: none; /* Enlève la bordure par défaut */
+    border-radius: 15px; /* Coins arrondis pour le menu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le menu */
+    padding: 15px; /* Padding par défaut */
+    width: 100%; /* Assure que le menu prend toute la largeur de la colonne */
+  }
+  
+  /* Réduction de la taille du menu */
+  .custom-menu .item {
+    padding: 10px; /* Réduit le padding des éléments du menu */
+  }
+  
+  /* Media Queries pour les petits écrans */
+  @media (max-width: 768px) {
+    .custom-menu-grid {
+      display: flex;
+      flex-direction: column; /* Arrange les éléments en colonne sur les petits écrans */
+    }
+  
+    .menu-column {
+      width: 100%; /* Prend toute la largeur disponible sur les petits écrans */
+      padding: 0; /* Enlève le padding par défaut */
+    }
+  
+    .custom-menu {
+      font-size: 0.9rem; /* Réduit la taille de la police */
+      padding: 10px; /* Réduit le padding du menu */
+      border-radius: 0; /* Enlève les coins arrondis pour une apparence plus nette */
+    }
+  
+    .custom-menu .item {
+      padding: 8px; /* Ajuste le padding des éléments du menu */
+    }
+  
+    .custom-menu.vertical {
+      display: flex;
+      flex-direction: row; /* Arrange les éléments horizontalement pour les petits écrans */
+    }
+  }

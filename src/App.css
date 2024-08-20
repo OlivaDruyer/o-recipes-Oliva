@@ -27,9 +27,36 @@ aside {
   overflow: hidden; /* Assure que le contenu ne dépasse pas les coins arrondis */
 }
 
+/* Media Queries pour les petits écrans */
+@media (max-width: 768px) {
+  .container {
+    display: flex; /* Utiliser flexbox pour les petits écrans */
+    flex-direction: column; /* Organiser le contenu en colonne */
+  }
 
+  /* aside {
+    display: flex;
+    flex-direction: row; /* Menu horizontal */
+    /* padding: 15px; Réduit le padding pour les petits écrans */
+    /* height: auto; Ajuste la hauteur en fonction du contenu */
+    /* border-radius: 15px; Coins arrondis pour le menu */
+    /* overflow-x: auto; Permet le défilement horizontal si nécessaire */
+    /* flex-wrap: nowrap; Évite les retours à la ligne pour le menu */
+    /* gap: 10px; Espacement entre les éléments du menu */
+  /* } */ */
 
+  .container-column {
+    flex: 1; /* Le contenu principal prend toute la largeur disponible */
+    margin-top: 10px; /* Espacement au-dessus du contenu principal */
+  }
+}
 
+/* Media Queries pour les très petits écrans */
+@media (max-width: 480px) {
+  aside {
+    padding: 10px; /* Réduit encore le padding */
+  }
+}
 
 
 

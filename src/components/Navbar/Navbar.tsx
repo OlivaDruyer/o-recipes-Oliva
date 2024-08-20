@@ -1,5 +1,6 @@
 import { MenuItem, GridColumn, Grid, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 interface MenuProps {
   items: { slug: string; name: string; label: string }[];

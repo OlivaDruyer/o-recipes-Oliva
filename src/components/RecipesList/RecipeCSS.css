@@ -123,6 +123,18 @@ img {
     margin-bottom: 5px;
   }
   
+  /* Media Queries */
+@media (max-width: 768px) {
+  .recipe-card {
+    width: 100%;
+  }
   
+  .recipe-image {
+    max-width: 100%;
+  }
   
- 
+  /* Utilisation des classes de grille pour un affichage en 2 colonnes */
+  .ui.grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes pour les écrans plus petits */
+  }
+}
